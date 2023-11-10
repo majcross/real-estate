@@ -27,6 +27,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@inertiajs/progress": "^0.2.7",
     "@inertiajs/vue3": "^1.0.13"
   }
 }
