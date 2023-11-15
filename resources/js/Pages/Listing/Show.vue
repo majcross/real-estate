@@ -35,6 +35,30 @@
                             <Price :price="monthlyPayment" class="text-3xl"/>
                         </div>
                     </div>
+                    <div class="mt-2 text-gray-500">
+                        <div class="flex justify-between">
+                            <div>Total Paid</div>
+                            <div>
+                                <Price :price="totalPaid" class="font-medium"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-gray-500">
+                        <div class="flex justify-between">
+                            <div>Principal Paid</div>
+                            <div>
+                                <Price :price="listing.price" class="font-medium"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-gray-500">
+                        <div class="flex justify-between">
+                            <div>Intreset Paid</div>
+                            <div>
+                                <Price :price="totalInterest" class="font-medium"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </Box>
         </div>
@@ -54,15 +78,15 @@ const duration = ref(25)
 const props = defineProps({
     listing:Object
 })
+   const {monthlyPayment, totalPaid, totalInterest} = useMonthlyPayment(props.listing.price, interestRate, duration)
+// const monthlyPayment = computed(()=>{
+//     const principle = props.listing.price
+//     const monthlyInterest = interestRate.value/100/12
+//     const numberOfPaymentMonths = duration.value*12
 
-const monthlyPayment = computed(()=>{
-    const principle = props.listing.price
-    const monthlyInterest = interestRate.value/100/12
-    const numberOfPaymentMonths = duration.value*12
+//     return principle * monthlyInterest * (Math.pow(1 + monthlyInterest, numberOfPaymentMonths)) / (Math.pow(1 + monthlyInterest, numberOfPaymentMonths) - 1)
 
-    return principle * monthlyInterest * (Math.pow(1 + monthlyInterest, numberOfPaymentMonths)) / (Math.pow(1 + monthlyInterest, numberOfPaymentMonths) - 1)
-
-})
+// })
 </script>
 <script>
 
